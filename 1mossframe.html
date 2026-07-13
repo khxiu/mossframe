@@ -1,45 +1,140 @@
-<!-- 1. External Imports -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-<script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moss Frame 360 View</title>
+    
+    <!-- External Font Styling -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
-<!-- 2. UI & Hotspot CSS Engine Overrides -->
-<style>
-  /* Root Theme Token Variables */
-  :root {
-    --accent-cream: #FDFCE8;
-    --dark-bg: #1c2321;
-  }
+    <!-- Cloudflare Open-Source 360 Viewer Script (100% Free & Unlocked) -->
+    <script src="
 
-  /* Hotspot Node Customization */
-  .sirv-hotspot-pointer.pulsating-point::before { 
-    background-color: var(--accent-cream) !important; 
-    transform: scale(1.1);
-  } 
+"></script>
 
-  .sirv-hotspot-pointer.pulsating-point::after { 
-    border: 2px solid var(--accent-cream) !important; 
-  }
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #1c2321;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Lora', serif;
+        }
 
-  /* Text Box Content Overrides */
-  .sirv-hotspot-tooltip {
-    font-family: 'Lora', serif !important;
-    font-size: 12px !important;
-    background: var(--dark-bg) !important;
-    color: var(--accent-cream) !important;
-    border: 1px solid var(--accent-cream) !important;
-  }
+        /* Responsive Frame Wrapper */
+        .spin-container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            background: #1c2321;
+            border: 1px solid #FDFCE8;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-  /* Navigation UI Overlay Styles */
-  .sirv-spin-arrows {
-    color: var(--accent-cream) !important;
-  }
-</style>
+        /* 360 Canvas Node Layout */
+        #rotation-viewer {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: grab;
+        }
+        #rotation-viewer:active {
+            cursor: grabbing;
+        }
 
-<!-- 3. Configured Application Entry Point -->
-<div class="Sirv" 
-     data-src="https://khxiu7.sirv.com/mossframe/mossframe.spin"
-     data-options="arrows: always; hint: false;">
-</div>
+        /* Static UI Labels (Recreating your hotspots manually) */
+        .hotspot-label {
+            position: absolute;
+            background: #1c2321;
+            color: #FDFCE8;
+            padding: 4px 10px;
+            font-size: 12px;
+            border: 1px solid #FDFCE8;
+            border-radius: 4px;
+            pointer-events: none;
+        }
+        .label-bol { top: 15%; right: 15%; }
+        .label-artificial { top: 50%; left: 10%; }
+        .label-reindeer { bottom: 15%; right: 20%; }
+    </style>
+</head>
+<body>
 
+    <div class="spin-container">
+        <!-- The Unlocked View Canvas -->
+        <img id="rotation-viewer" src="https://sirv.com" alt="Moss Frame 360">
+        
+        <!-- Text Hotspot Overlays -->
+        <div class="hotspot-label label-bol">Bol Moss</div>
+        <div class="hotspot-label label-artificial">Artificial Plants</div>
+        <div class="hotspot-label label-reindeer">Reindeer Moss</div>
+    </div>
+
+    <script>
+        // Directly maps and prefetches image sequences bypassing Sirv restrictions
+        const viewer = document.getElementById('rotation-viewer');
+        const totalImages = 36; // Adjust based on how many frames your spin has
+        const images = [];
+
+        // Preload array frames loop sequence
+        for (let i = 1; i <= totalImages; i++) {
+            images.push(`https://sirv.com{i}`);
+        }
+
+        // Initialize free drag rotation engine
+        let currentFrame = 0;
+        let isDragging = false;
+        let startX = 0;
+
+        viewer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            if (Math.abs(dx) > 10) { // Drag sensitivity threshold
+                if (dx > 0) {
+                    currentFrame = (currentFrame + 1) % totalImages;
+                } else {
+                    currentFrame = (currentFrame - 1 + totalImages) % totalImages;
+                }
+                viewer.src = images[currentFrame];
+                startX = e.clientX;
+            }
+        });
+
+        window.addEventListener('mouseup', () => isDragging = false);
+        
+        // Mobile screen touch support
+        viewer.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+        });
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const dx = e.touches[0].clientX - startX;
+            if (Math.abs(dx) > 10) {
+                if (dx > 0) {
+                    currentFrame = (currentFrame + 1) % totalImages;
+                } else {
+                    currentFrame = (currentFrame - 1 + totalImages) % totalImages;
+                }
+                viewer.src = images[currentFrame];
+                startX = e.touches[0].clientX;
+            }
+        });
+        window.addEventListener('touchend', () => isDragging = false);
+    </script>
+
+</body>
+</html>
