@@ -1,0 +1,45 @@
+<!-- 1. External Imports -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+
+<!-- 2. UI & Hotspot CSS Engine Overrides -->
+<style>
+  /* Root Theme Token Variables */
+  :root {
+    --accent-cream: #FDFCE8;
+    --dark-bg: #1c2321;
+  }
+
+  /* Hotspot Node Customization */
+  .sirv-hotspot-pointer.pulsating-point::before { 
+    background-color: var(--accent-cream) !important; 
+    transform: scale(1.1);
+  } 
+
+  .sirv-hotspot-pointer.pulsating-point::after { 
+    border: 2px solid var(--accent-cream) !important; 
+  }
+
+  /* Text Box Content Overrides */
+  .sirv-hotspot-tooltip {
+    font-family: 'Lora', serif !important;
+    font-size: 12px !important;
+    background: var(--dark-bg) !important;
+    color: var(--accent-cream) !important;
+    border: 1px solid var(--accent-cream) !important;
+  }
+
+  /* Navigation UI Overlay Styles */
+  .sirv-spin-arrows {
+    color: var(--accent-cream) !important;
+  }
+</style>
+
+<!-- 3. Configured Application Entry Point -->
+<div class="Sirv" 
+     data-src="https://khxiu7.sirv.com/mossframe/mossframe.spin"
+     data-options="arrows: always; hint: false;">
+</div>
+
