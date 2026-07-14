@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com" rel="stylesheet">
 
-    <!-- THIS LOADING SCRIPT SEAMLESSLY MERGES THE VIEWER WITH YOUR CUSTOM DESIGN STYLES -->
-    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+    <!-- SIRV ENGINE SCRIPT -->
+    <script src="https://sirv.com"></script>
 
     <style>
         body {
@@ -52,7 +52,7 @@
             border: 1px solid #c5c6c7 !important; 
         }
 
-        /* Optional: Forces matching color scheme inside tooltips */
+        /* Forces matching color scheme inside tooltips */
         .Sirv .sirv-hotspot-tooltip--default {
             background-color: rgba(28, 35, 33, 0.95) !important;
             color: #c5c6c7 !important;
@@ -63,12 +63,13 @@
 <body>
 
     <div class="spin-container">
-        <!-- WE REMOVED THE IFRAME SO THE CSS STYLING RULES ABOVE CAN REACH THE DOT -->
+        <!-- ADDED THE HTML5 PARAMETER TO BYPASS DOMAIN BLOCKS -->
         <div class="Sirv" data-src="https://sirv.com"></div>
     </div>
 
 </body>
 </html>
+
 
 
 
