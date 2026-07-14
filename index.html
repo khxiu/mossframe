@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moss Frame 360 View</title>
     
-    <!-- External Google Fonts for your main webpage structural fallback layout -->
+    <!-- 1. External Google Fonts Import -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
+    <!-- 2. Official Sirv Engine Script (Fixes the Frame Connection Refusal) -->
+    <script src="https://scripts.sirv.com/sirv.js"></script>
+
+    <!-- 3. UI Styling & Custom Hotspot CSS Configurations -->
     <style>
         body {
             margin: 0;
@@ -23,6 +27,7 @@
             box-sizing: border-box;
         }
 
+        /* Fully Responsive Flex-Container */
         .spin-container {
             width: 100%;
             max-width: 600px;
@@ -34,28 +39,45 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        
-        iframe {
-            width: 100%;
-            height: 100%;
-            display: block;
-            border: none;
+
+        /* Hotspot Core Interface Rules */
+        .sirv-hotspot-pointer.pulsating-point::before {
+            background-color: #c5c6c7 !important;
+            transform: scale(1.1);
+        }
+        .sirv-hotspot-pointer.pulsating-point::after {
+            border: 2px solid #c5c6c7 !important;
+        }
+
+        /* Text Label/Tooltip Customization using Abril Fatface */
+        .sirv-hotspot-tooltip {
+            font-family: 'Abril Fatface', serif !important;
+            font-size: 14px !important;
+            background: #1c2321 !important;
+            color: #c5c6c7 !important;
+            border: 1px solid #c5c6c7 !important;
+            padding: 6px 12px !important;
+            border-radius: 4px !important;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation Arrows styling */
+        .sirv-spin-arrows {
+            color: #c5c6c7 !important;
         }
     </style>
 </head>
 <body>
 
+    <!-- 4. Main App Interactive Output Component Frame -->
     <div class="spin-container">
-        <!-- 
-          Bypasses domain blocks and cleanly injects:
-          - Hotspot color hex: #c5c6c7
-          - Text & UI Font family: 'Abril Fatface' (dynamically compiled inside the viewer)
-        -->
-        <iframe src="https://sirv.com" allowfullscreen></iframe>
+        <!-- Securely hooks into your exact asset link using native classes -->
+        <div class="Sirv" data-src="https://sirv.com" data-options="arrows: always; hint: false;"></div>
     </div>
 
 </body>
 </html>
+
 
 
 
