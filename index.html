@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moss Frame 360 View</title>
     
-    <!-- 1. External Font Styling -->
+    <!-- 1. Fonts -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
-    <!-- 2. Scaleflex Cloudimage 360 Viewer Core CDN (100% Free Open Source Engine) -->
-    <script src="https://scaleflex.it"></script>
+    <!-- 2. Sirv Core Engine Script (Works Perfectly on Free GitHub Pages) -->
+    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 
+    <!-- 3. UI Styling & Mobile Optimization Overrides -->
     <style>
         body {
             margin: 0;
@@ -23,12 +24,14 @@
             align-items: center;
             min-height: 100vh;
             font-family: 'Lora', serif;
+            box-sizing: border-box;
         }
 
-        /* Responsive Wrapper */
+        /* Fully Responsive Flex-Container for Smartphone Views */
         .spin-container {
             width: 100%;
             max-width: 600px;
+            aspect-ratio: 1 / 1;
             position: relative;
             background: #1c2321;
             border: 1px solid #FDFCE8;
@@ -37,53 +40,47 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* 360 Layout Target Frame */
-        .cloudimage-360 {
-            width: 100%;
-            cursor: grab;
-        }
-        .cloudimage-360:active {
-            cursor: grabbing;
+        /* Root Token CSS Variables for Sirv Styles */
+        :root {
+            --accent-cream: #FDFCE8;
+            --dark-bg: #1c2321;
         }
 
-        /* Text Hotspot Labels */
-        .hotspot-label {
-            position: absolute;
-            background: #1c2321;
-            color: #FDFCE8;
-            padding: 4px 10px;
-            font-size: 12px;
-            border: 1px solid #FDFCE8;
-            border-radius: 4px;
-            pointer-events: none;
-            z-index: 10;
+        /* Hotspot Core Interface Overrides */
+        .sirv-hotspot-pointer.pulsating-point::before {
+            background-color: var(--accent-cream) !important;
+            transform: scale(1.1);
         }
-        .label-bol { top: 15%; right: 15%; }
-        .label-artificial { top: 50%; left: 10%; }
-        .label-reindeer { bottom: 15%; right: 20%; }
+        .sirv-hotspot-pointer.pulsating-point::after {
+            border: 2px solid var(--accent-cream) !important;
+        }
+
+        /* Text Label Overrides */
+        .sirv-hotspot-tooltip {
+            font-family: 'Lora', serif !important;
+            font-size: 12px !important;
+            background: var(--dark-bg) !important;
+            color: var(--accent-cream) !important;
+            border: 1px solid var(--accent-cream) !important;
+            padding: 6px 12px !important;
+            border-radius: 4px !important;
+        }
+
+        /* Navigation Arrows styling */
+        .sirv-spin-arrows {
+            color: var(--accent-cream) !important;
+        }
     </style>
 </head>
 <body>
 
+    <!-- 4. Main App Interactive Output Component Frame -->
     <div class="spin-container">
-        <!-- 3. Unlocked 360 Viewer Node Engine using Open Source Sample Sequence -->
-        <div class="cloudimage-360"
-             data-folder="https://cloudimg.io"
-             data-filename-x="car-{index}.jpg"
-             data-amount-x="36">
-        </div>
-        
-        <!-- Text Hotspot Overlays -->
-        <div class="hotspot-label label-bol">Bol Moss</div>
-        <div class="hotspot-label label-artificial">Artificial Plants</div>
-        <div class="hotspot-label label-reindeer">Reindeer Moss</div>
+        <!-- Replace the data-src link below with your actual company Sirv file .spin link if needed -->
+        <div class="Sirv" data-src="https://demo.sirv.com/spins/vivo/vivo-hotspots.spin" data-options="arrows: always; hint: false;"></div>
     </div>
-
-    <script>
-        // Self-initialize the open-source rotation engine canvas
-        window.CI360.init();
-    </script>
 
 </body>
 </html>
+
 
