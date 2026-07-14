@@ -5,91 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moss Frame 360 View</title>
     
-    <!-- 1. External Typography Styling -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
-    <!-- 2. Core 360 Open-Source View Rendering Dependencies -->
-    <script src="https://cloudflare.com"></script>
-    <script src="https://jsdelivr.net"></script>
+    <!-- NOTE: You do not need any Sirv script tags here when using an iframe -->
 
     <style>
-        html, body {
+        body {
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+            padding: 20px;
             background-color: #1c2321;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
             font-family: 'Lora', serif;
+            box-sizing: border-box;
         }
 
-        /* Responsive Viewer Container with Required Frame Color Accents */
         .spin-container {
-            width: 90vw;
+            width: 100%;
             max-width: 600px;
             aspect-ratio: 1 / 1;
             position: relative;
             background: #1c2321;
-            border: 2px solid #c5c6c7;
+            border: 1px solid #FDFCE8;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-
-        /* Ensures the 360 canvas maps perfectly inside the structural border constraints */
-        #viewer-container {
+        
+        /* Forces the frame to scale cleanly into your container dimensions */
+        iframe {
             width: 100%;
             height: 100%;
-        }
-
-        /* Custom UI Label Header Styling mapping Abril Fatface layout specs */
-        .custom-title {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Abril Fatface', serif;
-            color: #c5c6c7;
-            font-size: 1.5rem;
-            z-index: 10;
-            pointer-events: none;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            display: block;
         }
     </style>
 </head>
 <body>
 
     <div class="spin-container">
-        <div class="custom-title">Moss Frame 360°</div>
-        <!-- Target frame container injected by the local open-source script -->
-        <div id="viewer-container"></div>
+        <!-- Bypasses domain checks by loading directly from the Sirv engine host link -->
+        <iframe src="https://khxiu7.sirv.com/mossframe/mossframe.spin" frameborder="0" allowfullscreen></iframe>
     </div>
-
-    <script>
-        // Bypasses external platforms by directly processing equirectangular assets natively
-        const container = document.querySelector('#viewer-container');
-        
-        // Creates the viewer environment locally inside your own GitHub context 
-        const viewer = new PANOLENS.Viewer({ 
-            container: container,
-            controlBar: false,
-            autoHideInfospot: false
-        });
-
-        /* 
-          EMERGENCY DIRECT HOST ACTION REQUIRED:
-          Download your flat panoramic/360-projection asset from Sirv, name it 'mossframe.jpg',
-          and upload it directly into your GitHub repository folder alongside this file.
-        */
-        const panorama = new PANOLENS.ImagePanorama('mossframe.jpg');
-        
-        viewer.add(panorama);
-    </script>
 
 </body>
 </html>
