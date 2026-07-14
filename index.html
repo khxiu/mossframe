@@ -7,9 +7,10 @@
     
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com" rel="stylesheet">
 
-    <!-- NOTE: You do not need any Sirv script tags here when using an iframe -->
+    <!-- SIRV ENGINE SCRIPT: Connects natively to style your hotspots -->
+    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 
     <style>
         body {
@@ -35,24 +36,48 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+
+        /* ==========================================================================
+           CUSTOM HOTSPOT COLOUR OVERRIDES
+           ========================================================================== */
         
-        /* Forces the frame to scale cleanly into your container dimensions */
-        iframe {
-            width: 100%;
-            height: 100%;
-            display: block;
+        /* 1. Changes the core center dot to your grey (#c5c6c7) */
+        .sirv-hotspot-pointer.pulsating-point::before { 
+            background-color: #c5c6c7 !important; 
+            opacity: 0.9;
+        }
+
+        /* 2. Changes the expanding ripple wave effect ring to your grey (#c5c6c7) */
+        .sirv-hotspot-pointer.pulsating-point::after { 
+            border: 1px solid #c5c6c7 !important; 
+        }
+
+        /* 3. Text styling for the tooltip popups */
+        .sirv-hotspot-tooltip--default {
+            background-color: rgba(28, 35, 33, 0.95) !important;
+            color: #c5c6c7 !important;
+            border: 1px solid #c5c6c7;
+            font-family: 'Lora', serif;
+        }
+
+        .sirv-hotspot-box .sirv-hotspot-box-wrapper {
+            background: #1c2321 !important;
+            color: #c5c6c7 !important;
+            border: 1px solid #c5c6c7 !important;
+            font-family: 'Lora', serif;
         }
     </style>
 </head>
 <body>
 
     <div class="spin-container">
-        <!-- Bypasses domain checks by loading directly from the Sirv engine host link -->
-        <iframe src="https://khxiu7.sirv.com/mossframe/mossframe.spin" frameborder="0" allowfullscreen></iframe>
+        <!-- NATIVE CONTAINER: Replacing the iframe allows your styling rules to apply -->
+        <div class="Sirv" data-src="https://sirv.com"></div>
     </div>
 
 </body>
 </html>
+
 
 
 
