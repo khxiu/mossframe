@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com" rel="stylesheet">
 
-    <!-- SIRV ENGINE SCRIPT: Connects natively to style your hotspots -->
+    <!-- THIS LOADING SCRIPT SEAMLESSLY MERGES THE VIEWER WITH YOUR CUSTOM DESIGN STYLES -->
     <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 
     <style>
@@ -38,45 +38,38 @@
         }
 
         /* ==========================================================================
-           CUSTOM HOTSPOT COLOUR OVERRIDES
+           FORCE COLOR OVERRIDES TO GREY (#c5c6c7)
            ========================================================================== */
         
-        /* 1. Changes the core center dot to your grey (#c5c6c7) */
-        .sirv-hotspot-pointer.pulsating-point::before { 
+        /* Forces the inner core of the hotspot dot to be grey */
+        .Sirv .sirv-hotspot-pointer.pulsating-point::before { 
             background-color: #c5c6c7 !important; 
-            opacity: 0.9;
+            opacity: 1 !important;
         }
 
-        /* 2. Changes the expanding ripple wave effect ring to your grey (#c5c6c7) */
-        .sirv-hotspot-pointer.pulsating-point::after { 
+        /* Forces the radiating/expanding outer pulse ring to be grey */
+        .Sirv .sirv-hotspot-pointer.pulsating-point::after { 
             border: 1px solid #c5c6c7 !important; 
         }
 
-        /* 3. Text styling for the tooltip popups */
-        .sirv-hotspot-tooltip--default {
+        /* Optional: Forces matching color scheme inside tooltips */
+        .Sirv .sirv-hotspot-tooltip--default {
             background-color: rgba(28, 35, 33, 0.95) !important;
             color: #c5c6c7 !important;
-            border: 1px solid #c5c6c7;
-            font-family: 'Lora', serif;
-        }
-
-        .sirv-hotspot-box .sirv-hotspot-box-wrapper {
-            background: #1c2321 !important;
-            color: #c5c6c7 !important;
             border: 1px solid #c5c6c7 !important;
-            font-family: 'Lora', serif;
         }
     </style>
 </head>
 <body>
 
     <div class="spin-container">
-        <!-- NATIVE CONTAINER: Replacing the iframe allows your styling rules to apply -->
+        <!-- WE REMOVED THE IFRAME SO THE CSS STYLING RULES ABOVE CAN REACH THE DOT -->
         <div class="Sirv" data-src="https://sirv.com"></div>
     </div>
 
 </body>
 </html>
+
 
 
 
