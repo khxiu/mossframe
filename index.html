@@ -9,9 +9,6 @@
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com" rel="stylesheet">
 
-    <!-- SIRV ENGINE SCRIPT -->
-    <script src="https://sirv.com"></script>
-
     <style>
         body {
             margin: 0;
@@ -37,38 +34,32 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* ==========================================================================
-           FORCE COLOR OVERRIDES TO GREY (#c5c6c7)
-           ========================================================================== */
+        /* --- CUSTOM GREY HOTSPOT STYLES --- */
         
-        /* Forces the inner core of the hotspot dot to be grey */
-        .Sirv .sirv-hotspot-pointer.pulsating-point::before { 
+        /* Changes the inner solid circle color to grey */
+        .sirv-hotspot-pointer.pulsating-point::before { 
             background-color: #c5c6c7 !important; 
-            opacity: 1 !important;
-        }
-
-        /* Forces the radiating/expanding outer pulse ring to be grey */
-        .Sirv .sirv-hotspot-pointer.pulsating-point::after { 
+        } 
+        
+        /* Changes the outer pulsating ring color to grey */
+        .sirv-hotspot-pointer.pulsating-point::after { 
             border: 1px solid #c5c6c7 !important; 
-        }
-
-        /* Forces matching color scheme inside tooltips */
-        .Sirv .sirv-hotspot-tooltip--default {
-            background-color: rgba(28, 35, 33, 0.95) !important;
-            color: #c5c6c7 !important;
-            border: 1px solid #c5c6c7 !important;
-        }
+        } 
     </style>
 </head>
 <body>
 
     <div class="spin-container">
-        <!-- ADDED THE HTML5 PARAMETER TO BYPASS DOMAIN BLOCKS -->
-        <div class="Sirv" data-src="https://sirv.com"></div>
+        <!-- Direct embed using Sirv's JS class -->
+        <div class="Sirv" data-src="https://khxiu7.sirv.com/mossframe/mossframe.spin"></div>
     </div>
+
+    <!-- Required Sirv JavaScript engine placed at the bottom of the page -->
+    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 
 </body>
 </html>
+
 
 
 
