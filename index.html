@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moss Frame 360 View</title>
-    
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com" rel="stylesheet">
+
+    <!-- Google Font: Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lora', serif !important;
+        }
+
+        body {
             padding: 20px;
             background-color: #1c2321;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            font-family: 'Lora', serif;
-            box-sizing: border-box;
         }
 
         .spin-container {
@@ -31,30 +36,43 @@
             border: 1px solid #FDFCE8;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* --- CUSTOM GREY HOTSPOT STYLES --- */
-        
-        /* Changes the inner solid circle color to grey */
-        .sirv-hotspot-pointer.pulsating-point::before { 
-            background-color: #c5c6c7 !important; 
-        } 
-        
-        /* Changes the outer pulsating ring color to grey */
-        .sirv-hotspot-pointer.pulsating-point::after { 
-            border: 1px solid #c5c6c7 !important; 
-        } 
+        /* -------------------------------
+           Grey Hotspot Pointer
+        -------------------------------- */
+        .sirv-hotspot-pointer.pulsating-point::before {
+            background-color: #c5c6c7 !important;
+        }
+
+        .sirv-hotspot-pointer.pulsating-point::after {
+            border: 1px solid #c5c6c7 !important;
+        }
+
+        /* -------------------------------
+           Force Lora Font on Sirv Elements
+        -------------------------------- */
+        .Sirv,
+        .Sirv *,
+        .sirv-hotspot,
+        .sirv-hotspot *,
+        .sirv-hotspot-title,
+        .sirv-hotspot-description,
+        .sirv-hotspot-content,
+        .sirv-hotspot-popup,
+        .sirv-hotspot-popup * {
+            font-family: 'Lora', serif !important;
+        }
     </style>
 </head>
 <body>
 
     <div class="spin-container">
-        <!-- Direct embed using Sirv's JS class -->
         <div class="Sirv" data-src="https://khxiu7.sirv.com/mossframe/mossframe.spin"></div>
     </div>
 
-    <!-- Required Sirv JavaScript engine placed at the bottom of the page -->
+    <!-- Sirv JavaScript -->
     <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 
 </body>
