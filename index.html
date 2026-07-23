@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moss Frame 360 View</title>
-
-    <!-- Google Font: Lora -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Adobe Typekit Font Link Included Directly Here -->
+    <link rel="stylesheet" href="https://use.typekit.net/tie1rhn.css">
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Lora', serif !important;
+            /* Applies your new Adobe font across everything */
+            font-family: inherit; 
         }
-
         body {
             padding: 20px;
             background-color: #1c2321;
@@ -26,7 +24,6 @@
             align-items: center;
             min-height: 100vh;
         }
-
         .spin-container {
             width: 100%;
             max-width: 600px;
@@ -38,43 +35,26 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-
-        /* -------------------------------
-           Grey Hotspot Pointer
-        -------------------------------- */
+        /* ------------------------------- Grey Hotspot Pointer -------------------------------- */
         .sirv-hotspot-pointer.pulsating-point::before {
             background-color: #c5c6c7 !important;
         }
-
         .sirv-hotspot-pointer.pulsating-point::after {
             border: 1px solid #c5c6c7 !important;
         }
-
-        /* -------------------------------
-           Force Lora Font on Sirv Elements
-        -------------------------------- */
-        .Sirv,
-        .Sirv *,
-        .sirv-hotspot,
-        .sirv-hotspot *,
-        .sirv-hotspot-title,
-        .sirv-hotspot-description,
-        .sirv-hotspot-content,
-        .sirv-hotspot-popup,
-        .sirv-hotspot-popup * {
-            font-family: 'Lora', serif !important;
+        /* ------------------------------- Force Adobe Font on Sirv Elements -------------------------------- */
+        body, .Sirv, .Sirv *, .sirv-hotspot, .sirv-hotspot *, .sirv-hotspot-title, .sirv-hotspot-description, .sirv-hotspot-content, .sirv-hotspot-popup, .sirv-hotspot-popup * {
+            /* Fallback to sans-serif if Adobe Font hasn't loaded */
+            font-family: sans-serif !important; 
         }
     </style>
 </head>
 <body>
-
     <div class="spin-container">
         <div class="Sirv" data-src="https://khxiu7.sirv.com/mossframe/mossframe.spin"></div>
     </div>
-
     <!-- Sirv JavaScript -->
     <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
-
 </body>
 </html>
 
